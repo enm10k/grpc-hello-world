@@ -9,4 +9,5 @@ RUN apk add --update --no-cache git &&\
     go get golang.org/x/net/context &&\
     go get golang.org/x/text &&\
     go install google.golang.org/grpc/examples/helloworld/greeter_server &&\
-    go install google.golang.org/grpc/examples/helloworld/greeter_client
+    go install google.golang.org/grpc/examples/helloworld/greeter_client &&\
+    rm -rf /go/src
