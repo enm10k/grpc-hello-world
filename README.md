@@ -2,7 +2,7 @@
 
 ## What is this?
 
-A network communication confirmation tool when building a server infrastructure for grpc application.
+A network confirmation tool when building a server infrastructure for grpc application.
 
 ## How to use
 

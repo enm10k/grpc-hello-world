@@ -1,6 +1,6 @@
-FROM golang:1.7-alpine
+FROM golang:1.11-alpine AS build
 
-MAINTAINER enm10k <enm10k@gmail.com>
+LABEL maintainer "enm10k <enm10k@gmail.com>"
 
 WORKDIR /go/src/google.golang.org/grpc
 RUN apk add --update --no-cache git &&\
@@ -9,5 +9,9 @@ RUN apk add --update --no-cache git &&\
     go get golang.org/x/net/context &&\
     go get golang.org/x/text &&\
     go install google.golang.org/grpc/examples/helloworld/greeter_server &&\
-    go install google.golang.org/grpc/examples/helloworld/greeter_client &&\
-    rm -rf /go/src
+    go install google.golang.org/grpc/examples/helloworld/greeter_client
+
+FROM alpine
+
+COPY --from=build /go/bin/greeter_server /bin/greeter_server
+COPY --from=build /go/bin/greeter_client /bin/greeter_client
