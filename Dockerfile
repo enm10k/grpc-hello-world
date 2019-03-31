@@ -1,4 +1,4 @@
-FROM golang:1.11-alpine AS build
+FROM golang:1.12-alpine AS build
 
 LABEL maintainer "enm10k <enm10k@gmail.com>"
 
